@@ -23,4 +23,13 @@ urlpatterns = [
     path('',Home,name="home"),
     path('contact',Contact,name="contact"),
     path('about',About,name="about"),
+    path('adminlogin',adminLogin,name='adlogin'),
+    path('adminlogout',adlogout,name='logout'),
+    path('admindash',admindash,name='admindash'),
+    path('viewdoctor',viewdoctor,name='viewdoctor'),
+    path('viewpatient',viewpatient,name='viewpatient'),
+    path('viewappoint',viewappoint,name='viewappoint'),
+    path('adddoctor',adddoctor,name="adddoctor"),
+    path('addpatient',addpatient,name='addpatient'),
+    path('addappoint',addappoint,name='addappoint'),
 ]
