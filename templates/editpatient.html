@@ -7,29 +7,25 @@
     <title>Document</title>
 </head>
 <body>
-  <h1>Add Patient </h1>
+  <h1>Edit Patient </h1>
     <form style="width: 22rem;" class="p-2" action="" method="post">
         {% csrf_token %}
         <div data-mdb-input-init class="form-outline mb-4">
-          <input type="text" id="form5Example1" name="name" class="form-control" />
+          <input type="text" id="form5Example1" name="name" value={{name}} class="form-control" />
           <label class="form-label" for="form5Example1">Patients Name</label>
         </div>
       
 
         <div data-mdb-input-init class="form-outline mb-4">
-          <input type="text" id="form5Example2" name="address" class="form-control" />
+          <input type="text" id="form5Example2" name="address" value={{add}} class="form-control" />
           <label class="form-label" for="form5Example2">Address</label>
         </div>
 
         <div data-mdb-input-init class="form-outline mb-4">
+          <input type="text" id="form5Example2" name="gender" value={{gender}} class="form-control" />
           <label class="form-label" for="form5Example2">Gender</label>
-          <select id="" name="gender">
-            {% for g in gender %}
-            <option value="{{g.0}}">{{g.0}}</option>
-            {% endfor %}
-          </select>
         </div>
-      
+        
         <!-- Checkbox -->
         <div class="form-check d-flex justify-content-center mb-4">
           <input
@@ -45,7 +41,7 @@
         </div>
       
         <!-- Submit button -->
-        <button data-mdb-ripple-init type="submit" class="btn btn-primary btn-block mb-4">Add</button>
+        <button data-mdb-ripple-init type="submit" class="btn btn-success btn-block mb-4">Edit</button>
       </form>
 </body>
 </html>

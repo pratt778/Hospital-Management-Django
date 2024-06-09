@@ -32,4 +32,10 @@ urlpatterns = [
     path('adddoctor',adddoctor,name="adddoctor"),
     path('addpatient',addpatient,name='addpatient'),
     path('addappoint',addappoint,name='addappoint'),
+    path('editdoctor/<did>',editdoctor,name="editdoctor"),
+    path('deldoctor/<did>',deldoctor,name="deldoctor"),
+    path('editappoint/<aid>',editappoint,name="editappoint"),
+    path('delappoint/<aid>',delappoint,name="delappoint"),
+    path('editpatient/<pid>',editpatient,name="editpatient"),
+    path('delpatient/<pid>',delpatient,name="delpatient"),
 ]
