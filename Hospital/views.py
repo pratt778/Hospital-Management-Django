@@ -29,22 +29,27 @@ def adminLogin(request):
 def admindash(request):
     return render(request,'admindash.html')
 
+@login_required(login_url="adlogin")
 def adlogout(request):
     logout(request)
     return redirect('home')
 
+@login_required(login_url="adlogin")
 def viewdoctor(request):
     mydoc=Doctor.objects.all()
     return render(request,'viewdoctor.html',{'doctors':mydoc})
 
+@login_required(login_url="adlogin")
 def viewpatient(request):
     mypatient = Patient.objects.all()
     return render(request,'viewpatient.html',{'patients':mypatient})
 
+@login_required(login_url="adlogin")
 def viewappoint(request):
     myapp = Appointment.objects.all()
     return render(request,'viewappoint.html',{'apps':myapp})
 
+@login_required(login_url="adlogin")
 def adddoctor(request):
     if request.method=="POST":
         name = request.POST.get('name')
@@ -55,6 +60,7 @@ def adddoctor(request):
 
     return render(request,'adddoctor.html')
 
+@login_required(login_url="adlogin")
 def addpatient(request):
     data={}
     mypati = Patient.Gender_Choices
@@ -70,7 +76,7 @@ def addpatient(request):
 
     return render(request,'addpatient.html',data)
 
-
+@login_required(login_url="adlogin")
 def addappoint(request):
     if request.method=="POST":
         doc = request.POST.get('doctor')
@@ -84,6 +90,7 @@ def addappoint(request):
     mypatient = Patient.objects.all()
     return render(request,'addappoint.html',{'mydoc':mydoc,'mypatient':mypatient})
 
+@login_required(login_url="adlogin")
 def editdoctor(request,did):
     if request.method == "POST":
         name = request.POST.get('name')
@@ -101,11 +108,13 @@ def editdoctor(request,did):
     data={'name':name,"contact":contact,"speciality":spec}
     return render(request,'editdoctor.html',data)
 
+@login_required(login_url="adlogin")
 def deldoctor(request,did):
     mydoc = Doctor.objects.get(id=did)
     mydoc.delete()
     return redirect('viewdoctor')
 
+@login_required(login_url="adlogin")
 def editappoint(request,aid):
     if request.method=="POST":
         doc = request.POST.get('doctor')
@@ -135,11 +144,13 @@ def editappoint(request,aid):
 
     return render(request,'editappoint.html',data)
 
+@login_required(login_url="adlogin")
 def delappoint(request,aid):
     myapp = Appointment.objects.get(id=aid)
     myapp.delete()
     return redirect('viewappoint')
 
+@login_required(login_url="adlogin")
 def editpatient(request,pid):
     if request.method=="POST":
         name = request.POST.get('name')
@@ -160,6 +171,7 @@ def editpatient(request,pid):
     data['gender']=gender
     return render(request,'editpatient.html',data)
 
+@login_required(login_url="adlogin")
 def delpatient(request,pid):
     mypati = Patient.objects.get(id=pid)
     mypati.delete()

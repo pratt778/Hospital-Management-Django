@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock title %}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+</head>
+<body style="display: flex;">
+
+<header style="width: 20%; height: 80vh;">
+    <div class="d-flex flex-column flex-shrink-0 p-3 bg-light" style="width: 100%;">
+        <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
+          <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"/></svg>
+          <span class="fs-4">Admin</span>
+        </a>
+        <hr>
+        <ul class="nav nav-pills flex-column mb-auto gap-4">
+          <li class="nav-item" style="background-color: bisque;">
+            <a href="{% url "admindash" %}" class="nav-link  {% if request.path == '/admindash' %} active {% endif %} " aria-current="page">
+              Dashboard
+            </a>
+          </li>
+          <li class="nav-item" style="background-color: bisque;">
+            <a href="{% url "viewappoint" %}" class="nav-link {% if request.path == '/viewappoint' %} active {% endif %} " aria-current="page">
+              View Appointments
+            </a>
+          </li>
+          <li class="nav-item" style="background-color: bisque;">
+            <a href="{% url "viewdoctor" %}" class="nav-link {% if request.path == '/viewdoctor' %} active {% endif %} " aria-current="page">
+              View Doctors
+            </a>
+          </li>
+          <li class="nav-item" style="background-color: bisque;">
+            <a href="{% url "viewpatient" %}" class="nav-link {% if request.path == '/viewpatient' %} active {% endif %} " aria-current="page">
+              View Patients
+            </a>
+          </li>
+          <li class="nav-item" style="background-color: bisque;">
+            <a href="{% url "addappoint" %}" class="nav-link {% if request.path == '/addappoint' %} active {% endif %} " aria-current="page">
+              Add Appointments
+            </a>
+          </li>
+          <li class="nav-item" style="background-color: bisque;">
+            <a href="{% url "adddoctor" %}" class="nav-link {% if request.path == '/adddoctor' %} active {% endif %} " aria-current="page">
+              Add Doctors
+            </a>
+          </li>
+          <li class="nav-item" style="background-color: bisque;">
+            <a href="{% url "addpatient" %}" class="nav-link  {% if request.path == '/addpatient' %} active {% endif %} " aria-current="page">
+              Add Patients
+            </a>
+          </li>
+          <button class="nav-item btn bg-danger"><a href="{% url "logout" %}" class=" text-white nav-link">Logout</a></button>
+        </ul>
+        <hr>
+  </header>
+  <main style="margin-top: 5px; width: 70%;">
+   
+        {% block content %}
+      
+        {% endblock content %}
+    
+  </main>          
+    
+    
+
+</body>
+</html>
