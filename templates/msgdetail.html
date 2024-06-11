@@ -1,0 +1,35 @@
+{% extends "baseadmin.html" %}
+{% block content %}
+<main>
+    <h1>Message detail</h1>
+    <div class="" style="display: flex; flex-direction: column; gap: 1rem; margin-top: 1rem;">
+        <div style="box-shadow: 0 0 15px 5px gray; padding:1rem;">
+
+            <label for="fname" style="font-size: 32px; font-weight: bold; color:red ;">Fullname:</label>
+        <h2 id="fname" style="display: inline;">{{mymsg.Fullname}}</h2>
+        </div>
+        <div style="box-shadow: 0 0 15px 5px gray; padding:1rem;">
+
+            <label for="fname" style="font-size: 32px; font-weight: bold; color:red ;">Address:</label>
+        <h2 id="fname" style="display: inline;">{{mymsg.Address}}</h2>
+        </div>
+        <div style="box-shadow: 0 0 15px 5px gray; padding:1rem;">
+
+            <label for="fname" style="font-size: 32px; font-weight: bold; color:red ;">Email:</label>
+        <h2 id="fname" style="display: inline;">{{mymsg.Email}}</h2>
+        </div>
+        <div style="box-shadow: 0 0 15px 5px gray; padding:1rem;">
+
+            <label for="fname" style="font-size: 32px; font-weight: bold; color:red ;">Subject:</label>
+        <h2 id="fname" style="display: inline;">{{mymsg.Subject}}</h2>
+        </div>
+        <div style="box-shadow: 0 0 15px 5px gray; padding:1rem;">
+
+            <label for="fname" style="font-size: 32px; font-weight: bold; color:red ;">Message:</label>
+        <h2 id="fname" style="display: inline;">{{mymsg.Message}}</h2>
+        </div>
+     
+    </div>
+</main>
+
+{% endblock content %}

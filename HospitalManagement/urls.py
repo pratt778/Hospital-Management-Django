@@ -38,4 +38,6 @@ urlpatterns = [
     path('delappoint/<aid>',delappoint,name="delappoint"),
     path('editpatient/<pid>',editpatient,name="editpatient"),
     path('delpatient/<pid>',delpatient,name="delpatient"),
+    path('viewmsg',viewmsg,name="viewmsg"),
+    path('msgdetail/<mid>',msgdetail,name="msgdetail"),
 ]

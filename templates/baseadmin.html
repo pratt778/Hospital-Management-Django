@@ -51,6 +51,11 @@
               Add Patients
             </a>
           </li>
+          <li class="nav-item" style="background-color: bisque;">
+            <a href="{% url "viewmsg" %}" class="nav-link  {% if request.path == '/viewmsg' %} active {% endif %} " aria-current="page">
+              View Messages
+            </a>
+          </li>
           <button class="nav-item btn bg-danger"><a href="{% url "logout" %}" class=" text-white nav-link">Logout</a></button>
         </ul>
         <hr>

@@ -1,7 +1,38 @@
 {% extends "baseadmin.html" %}
 {% block title %}Admin Dashboard{% endblock title %}
 {% block content %}
-<span>this is admin dashboard</span>
+<h1 class="mx-3">Dashboard</h1>
+<main style="width: 100%; display: flex; justify-content: space-around;">
+    <a href="{% url "viewpatient" %}" style="text-decoration: none;">
 
+        <div class="card" style=" width: 200px;">
+            <div class="card-header">
+                No of Patients
+            </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">{{p}}</li>
+        </ul>
+    </div>
+</a>
+<a href="{% url "viewdoctor" %}" style="text-decoration: none;">
+    <div class="card" style="width:200px ;">
+        <div class="card-header">
+            No of Doctors
+        </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">{{d}}</li>
+        </ul>
+    </div>
+</a>
+    <a href="{% url "viewappoint" %}" style="text-decoration: none;">
+    <div class="card" style="width:200px ;">
+        <div class="card-header">
+            No of Appointments
+        </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">{{a}}</li>
+        </ul>
+    </div>
+    </a>
+</main>
 {% endblock content %}
-

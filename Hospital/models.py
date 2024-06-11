@@ -1,5 +1,5 @@
 from django.db import models
-
+from datetime import date
 # Create your models here.
 class Doctor(models.Model):
     Doctor_name = models.CharField(max_length=100)
@@ -26,4 +26,18 @@ class Appointment(models.Model):
 
     def __str__(self):
         return self.Doctor.Doctor_name+'<-------------->'+self.Patient.Patient_name
+    
+
+class ContactForm(models.Model):
+    Fullname = models.CharField(max_length=200)
+    Address = models.CharField(max_length=200)
+    Email = models.EmailField()
+    Subject=models.CharField(max_length=200)
+    Message = models.TextField()
+    Sent_Date = models.DateField(default=date.today)
+
+    def __str__(self):
+        return self.Fullname+', Subject='+self.Subject
+
+
 

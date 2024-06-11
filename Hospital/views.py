@@ -2,14 +2,23 @@ from django.shortcuts import render,redirect
 from django.contrib.auth.models import User
 from django.contrib.auth import login,logout,authenticate
 from django.contrib.auth.decorators import login_required
-from .models import Doctor,Patient,Appointment
+from .models import Doctor,Patient,Appointment,ContactForm
+from .forms import MyContactForm
 
 # Create your views here.
 def Home(request):
     return render(request,'index.html')
 
 def Contact(request):
-    return render(request,'contact.html')
+    data ={}
+    form = MyContactForm()
+    data['form']=form
+    if request.method=="POST":
+        form = MyContactForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('home')
+    return render(request,'contact.html',data)
 
 def About(request):
     return render(request,'about.html')
@@ -27,7 +36,14 @@ def adminLogin(request):
 
 @login_required(login_url="adlogin")
 def admindash(request):
-    return render(request,'admindash.html')
+    data = {}
+    mypati = Patient.objects.all()
+    data['p']=len(mypati)
+    mydoc = Doctor.objects.all()
+    data['d']=len(mydoc)
+    myapp = Appointment.objects.all()
+    data['a']=len(myapp)
+    return render(request,'admindash.html',data)
 
 @login_required(login_url="adlogin")
 def adlogout(request):
@@ -176,3 +192,18 @@ def delpatient(request,pid):
     mypati = Patient.objects.get(id=pid)
     mypati.delete()
     return redirect('viewpatient')
+
+@login_required(login_url='adlogin')
+def viewmsg(request):
+    data={}
+    mymsg = ContactForm.objects.all()
+    data['msg']=mymsg
+    return render(request,'viewmsg.html',data)
+
+
+@login_required(login_url='adlogin')
+def msgdetail(request,mid):
+    data = {}
+    mymsg = ContactForm.objects.get(id=mid)
+    data['mymsg']=mymsg
+    return render(request,'msgdetail.html',data)

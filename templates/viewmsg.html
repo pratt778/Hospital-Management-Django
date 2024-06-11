@@ -1,0 +1,35 @@
+{% extends "baseadmin.html" %}
+{% block content %}
+
+<h1 class="mx-2">View Messages</h1>
+<table class="table table-dark">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Full Name</th>
+        <th scope="col">Address</th>
+        <th scope="col">Email Address</th>
+        <th scope="col">Subject</th>
+        <th scope="col">Message</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for m in msg %}
+        
+        
+        <tr>
+            <th scope="row">{{m.id}}</th>
+            <td>{{m.Fullname}}</td>
+            <td>{{m.Address}}</td>
+            <td>{{m.Email}}</td>
+            <td>{{m.Subject}}</td>
+            <td>{{m.Message | truncatewords:10 }}</td>
+            <td><button class="btn btn-danger"><a href="{% url "msgdetail" m.id %}" class="text-white">View</a></button></td>
+            
+            </tr>
+            
+            {% endfor %}
+    </tbody>
+  </table>
+{% endblock content %}
